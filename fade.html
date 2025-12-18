@@ -2,37 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Selectors</title>
+    <title>Fade</title>
     <link href="cdn.jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script>
-        // $(selector).function()
         $(document).ready(function(){
-
-            // Tag selector
             $("p").click(function(){
-                $("p").hide();
+                $("p").fadeOut(1500);
             });
-
-
-            // Class Selector
             $(".text").click(function(){
-                $("p").show();
+                $("p").fadeIn(10000)
             });
 
-
-            // ID Selector
-            $("#test").click(function(){
-                $("div#test").css("background-color", "blanchedalmond");
-                $(".text").css("color", "orange");
-            });
         });
     </script>
 </head>
 <body>
+
+
 <p>I'm some text. Select me!</p>
 <div class="text">Yo - I'm here too. Click me.</div>
 <div id="test">Even more stuff to play with.</div>
+
 
 <script src="cdn.jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
