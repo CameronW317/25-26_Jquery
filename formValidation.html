@@ -1,32 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Form Validation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
             $("#submit").click(function(){
                 if($("#fname").val().length === 0){
                     $("#fname").css({"background-color": "red"});
-                    $('#fnameE').css({"display": "block"});
+                    $("#fnameE").css({"display": "block"});
+                    $("#fname").css({"color": "white"});
+                }else{
+                    $("#fname").css({"background-color": "white"});
+                    $("#fnameE").css({"display": "none"});
+                    $("#fname").css({"color": "black"});
                 }
+                if($("#lname").val().length === 0){
+                    $("#lname").css({"background-color": "red"});
+                    $("#lnameE").css({"display": "block"});
+                    $("#fname").css({"color": "white"});
+                }else{
+                    $("#lname").css({"background-color": "white"});
+                    $("#lnameE").css({"display": "none"});
+                    $("#lname").css({"color": "black"});
+                }
+                if($("#street").val().length === 0){
+                    $("#street").css({"background-color": "red"});
+                    $("#streetE").css({"display": "block"});
+                    $("#street").css({"color": "white"});
+                }else{
+                    $("#street").css({"background-color": "white"});
+                    $("#streetE").css({"display": "none"});
+                    $("#street").css({"color": "black"});
+                }
+                if($("#username").val().length === 0){
+                    $("#username").css({"background-color": "red"});
+                    $("#usernameE").css({"display": "block"});
+                    $("#username").css({"color": "white"});
+                }else{
+                    $("#street").css({"background-color": "white"});
+                    $("#streetE").css({"display": "none"});
+                    $("#street").css({"color": "black"});
+                }
+
                 var phone_filter = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
                 if(!phone_filter.test($("#phone").val())){
                     $("#phone").css({"background-color": "red"});
-                    $('#phoneE').css({"display": "block"});
+                    $("#phoneE").css({"display": "block"});
+                    $("#phone").css({"color": "white"});
+
+                }else{
+                    $("#phone").css({"background-color": "white"});
+                    $("#phoneE").css({"display": "none"});
+                    $("#phone").css({"color": "black"});
                 }
 
+                email_filter = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if(!email_filter.test($("#email").val())){
+                    $("#email").css({"background-color": "red"});
+                    $("#emailE").css({"display": "block"});
+                    $("#email").css({"color": "white"});
+
+                }else{
+                    $("#email").css({"background-color": "white"});
+                    $("#emailE").css({"display": "none"});
+                    $("#email").css({"color": "black"});
+                }
+
+                if($("#password").val().length < 8 || $("#password").val() !== $("#password2").val()){
+                    $("#password").css({"background-color": "red"});
+                    $("#password").css({"color": "white"});
+                    $("#password2").css({"background-color": "red"});
+                    $("#password2").css({"color": "white"});
+                    $("#passwordE").css({"display": "block"});
+
+                }else{
+                    $("#password").css({"background-color": "white"});
+                    $("#password").css({"color": "black"});
+                    $("#password2").css({"background-color": "white"});
+                    $("#password2").css({"color": "black"});
+                    $("#passwordE").css({"display": "none"});
+
+                }
             });
-
-
-
         });
     </script>
 </head>
 <body>
-
 <form>
     <input type="text" name="fname" id="fname" placeholder="First Name" />
     <div id="fnameE" style="display:none">Please enter your first name.</div>
@@ -34,15 +95,18 @@
 
     <label for="lname">Last Name</label>
     <input type="text" name="lname" id="lname" /><br />
+    <div id="lnameE" style="display:none">Please enter your last name.</div>
 
     <label for="street">Street Address</label>
     <input type="text" name="street" id="street" /><br />
+    <div id="streetE" style="display:none">Please enter your address.</div>
 
     <label for="street2">Address 2</label>
     <input type="text" name="street2" id="street2" /><br />
 
     <label for="city">City</label>
     <input type="text" name="city" id="city" />
+
     <label for="state">State</label>
     <select name="state" id="state">
         <option value="AL">Alabama</option>
@@ -101,7 +165,7 @@
     <input type="text" name="city" id="zip" /><br />
 
     <label for="phone">Phone</label>
-    <input type="text" name="phone" id="phone" placeholder="123-123-1234"/><br />
+    <input type="text" name="phone" id="phone" placeholder="123-123-1234" /><br />
     <div id="phoneE" style="display:none">Please enter a valid phone number.</div>
 
     <label for="email">Email</label>
@@ -113,10 +177,11 @@
 
     <label for="username">Username</label>
     <input type="text" name="username" id="username" /><br />
+    <div id="usernameE" style="display:none">Please enter your username.</div>
 
     <label for="password">Password</label>
     <input type="text" name="password" id="password" /><br />
-
+    <div id="passwordE" style="display:none">Password must be 8 characters long and match.</div>
     <label for="password2">Confirm Password</label>
     <input type="text" name="password2" id="password2" /><br />
 
@@ -126,7 +191,5 @@
     <button type="button" name="submit" id="submit">Submit</button>
 
 </form>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
