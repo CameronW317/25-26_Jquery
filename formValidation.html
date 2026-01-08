@@ -83,6 +83,17 @@
                     $("#passwordE").css({"display": "none"});
 
                 }
+                if($("#dob").val().length < 1){
+                    $("#dob").css({"background-color": "red"});
+                    $("#dob").css({"color": "white"});
+                    $("#dobE").css({"display": "block"});
+
+                }else{
+                    $("#dob").css({"background-color": "white"});
+                    $("#dob").css({"color": "black"});
+                    $("#dobE").css({"display": "none"});
+
+                }
             });
         });
     </script>
@@ -174,6 +185,7 @@
 
     <label for="dob">DOB</label>
     <input type="text" name="dob" id="dob" /><br />
+    <div id="dobE" style="display:none">Please enter a DOB.</div>
 
     <label for="username">Username</label>
     <input type="text" name="username" id="username" /><br />
